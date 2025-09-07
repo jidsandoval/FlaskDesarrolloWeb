@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ titulo }} - Servicios Web Profesionales{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-5">{{ titulo }}</h1>
+    
+    <div class="row">
+        {% for servicio in servicios %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card service-card h-100">
+                <div class="card-img-container">
+                    <img src="{{ servicio.imagen }}" class="card-img-top" alt="{{ servicio.nombre }}">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ servicio.nombre }}</h5>
+                    <p class="card-text">{{ servicio.descripcion }}</p>
+                    <p class="price-tag">${{ servicio.precio }}</p>
+                    <a href="{{ url_for('contacto') }}?servicio={{ servicio.nombre }}" class="btn btn-primary">
+                        Solicitar este servicio
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-info text-center">
+                No hay servicios disponibles en este momento.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="{{ url_for('index') }}" class="btn btn-outline-primary">Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Servicios Web Profesionales{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<!-- Sección Hero modificada (sin gradiente azul) -->
+<section class="hero-section" style="background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80') fixed; background-size: cover;">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-4">Soluciones Web a Medida</h1>
+        <p class="lead mb-4">Desarrollamos aplicaciones y sitios web modernos, escalables y de alto rendimiento.</p>
+        <a href="{{ url_for('contacto') }}" class="btn btn-light btn-lg">Contáctanos</a>
+    </div>
+</section>
+
+<!-- Servicios Destacados -->
+<section class="container">
+    <h2 class="text-center mb-5">Nuestros Servicios Destacados</h2>
+    <div class="row">
+        {% for servicio in servicios %}
+        <div class="col-md-4 mb-4">
+            <div class="card service-card h-100">
+                <div class="card-img-container">
+                    <img src="{{ servicio.imagen }}" class="card-img-top" alt="{{ servicio.nombre }}">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ servicio.nombre }}</h5>
+                    <p class="card-text">{{ servicio.descripcion }}</p>
+                    <p class="price-tag">${{ servicio.precio }}</p>
+                    <a href="{{ url_for('detalle_servicio', servicio_id=servicio.id) }}" class="btn btn-primary">Más información</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="{{ url_for('listar_servicios') }}" class="btn btn-outline-primary">Ver todos los servicios</a>
+    </div>
+</section>
+
+<!-- Testimonios -->
+<section class="container my-5 py-5">
+    <h2 class="text-center mb-5">Lo que dicen nuestros clientes</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card testimonial-card">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="card-text">"Increíble trabajo. Transformaron por completo nuestra presencia web."</p>
+                    <footer class="blockquote-footer mt-3">Carlos Rodríguez, <cite title="Source Title">TechCorp</cite></footer>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card testimonial-card">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="card-text">"Profesionales, puntuales y con resultados excepcionales. Altamente recomendados."</p>
+                    <footer class="blockquote-footer mt-3">María González, <cite title="Source Title">StartupXYZ</cite></footer>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card testimonial-card">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="card-text">"El SEO que implementaron triplicó nuestro tráfico orgánico en solo 3 meses."</p>
+                    <footer class="blockquote-footer mt-3">Javier López, <cite title="Source Title">EduTech</cite></footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
