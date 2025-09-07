@@ -43,7 +43,7 @@ servicios = [
         'imagen': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
     },
     {
-        'id': 7,
+        'id': 6,
         'nombre': 'Branding Digital',
         'descripcion': 'Desarrollo de identidad visual para tu marca',
         'precio': 900,
